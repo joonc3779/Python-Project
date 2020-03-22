@@ -1,20 +1,18 @@
-#import poll
+#import os and csv
 import os
 import csv
-#working directory
+
+#Define working directory
 csvpath=os.path.join('/','/Users/Joon/Desktop/python-challenge/PyPoll','election_data.csv')
 
 
-# A list to capture the names of candidates
+# A list of variables
 candidates = []
 
-# A list to capture the number of votes each candidate receives
 num_votes = []
 
-# A list to capture the percentage of total votes each candidate garners 
 percent_votes = []
 
-# A counter for the total number of votes 
 total_votes = 0
 
 with open(csvpath, newline = "") as csvfile:
@@ -22,7 +20,7 @@ with open(csvpath, newline = "") as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
-        # Add to our vote-counter 
+        
         total_votes += 1 
 
         
@@ -34,19 +32,19 @@ with open(csvpath, newline = "") as csvfile:
             index = candidates.index(row[2])
             num_votes[index] += 1
     
-    # Add to percent_votes list 
+    # Add the percentage of votes
     for votes in num_votes:
         percentage = (votes/total_votes) * 100
         percentage = round(percentage)
         percentage = "%.3f%%" % percentage
         percent_votes.append(percentage)
     
-    # Find the winning candidate
+    # Variables for winning candidate
     winner = max(num_votes)
     index = num_votes.index(winner)
     winning_candidate = candidates[index]
 
-# Displaying results
+# Print statements
 print("Election Results")
 print("--------------------------")
 print(f"Total Votes: {str(total_votes)}")

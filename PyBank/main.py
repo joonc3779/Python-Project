@@ -19,12 +19,12 @@ with open(filepath, newline='') as csvfile:
     
     print(f"Header: {csv_header}")               
 
-#Months       
+#Modify Months       
     for row in csvreader:
         month.append(row[0])
         revenue.append(row[1])
     print(len(month))
- #Revenue 
+ #Variable for total revenue 
     revenue_int = map(int,revenue)
     total_revenue = (sum(revenue_int))
     print(total_revenue)
@@ -36,18 +36,18 @@ with open(filepath, newline='') as csvfile:
  # append profit_loss
         revenue_change.append(profit_loss)
     Total = sum(revenue_change)
-    #print(revenue_change)
+    print(revenue_change)
     monthly_change = Total / len(revenue_change)
     print(monthly_change)
-    #print(Total)
+    print(Total)
     
-#Greatest Increase
+#Variables for Greatest Increase
     profit_increase = max(revenue_change)
     print(profit_increase)
     k = revenue_change.index(profit_increase)
     month_increase = month[k+1]
     
-#Greatest Decrease
+#Variables for Greatest Decrease
     profit_decrease = min(revenue_change)
     print(profit_decrease)
     j = revenue_change.index(profit_decrease)
@@ -58,13 +58,11 @@ with open(filepath, newline='') as csvfile:
 
 print(f'Financial Analysis'+'\n')
 print(f'----------------------------'+'\n')
+print("Total Months: " + str(len(month)))
 
-
-print("Total number of months: " + str(len(month)))
-
-print("Total Revenue in period: $ " + str(total_revenue))
+print("Total: $" + str(total_revenue))
       
-print("Average monthly change in Revenue : $" + str(monthly_change))
+print("Average  Change: $" + str(monthly_change))
 
 print(f"Greatest Increase in Profits: {month_increase} (${profit_increase})")
 
